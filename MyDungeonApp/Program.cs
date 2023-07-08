@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using System.Threading;
+using DungeonLibrary;
 
 namespace MyDungeonApp
 {
@@ -13,7 +14,16 @@ namespace MyDungeonApp
             #endregion
 
             #region Player Creation
+            //Player Creation, after we've learned how to create custom Datatypes.
+            //Reference the notes in the TestHarness for some ideas of how to expand player creation.
 
+            //Potential expansion - Let the user choose from a list of pre-made weapons.
+            Weapon club = new("Lightsaber", 1, 8, 10, 0, WeaponType.Club);
+
+            //Potential Expansion - Let the user choose their name and Race
+            Player player = new("Leeroy Jenkins", Race.Human, club);
+
+            player.Score = 0;
 
             #endregion
 
@@ -89,7 +99,7 @@ namespace MyDungeonApp
                     // Check Player Life. If they are dead, quit the game and show them their score.
                     if (player.Life < +0)
                     {
-                        Console.WriteLine("You suck...\a");
+                        Console.WriteLine("You died...\a");
                         quit = true; //Leaves both loops.
                     }
 
@@ -124,6 +134,5 @@ namespace MyDungeonApp
             //Refactor:
             //return rooms[new Random().Next(rooms.Length)];
         }//End GetRoom()
-    }
     }
 }

@@ -8,17 +8,35 @@ namespace DungeonLibrary
 {
     public class Weapon
     {
-        //FIELDS - Funny        //PROPS - People        public string Name {  get; set; }        public int MinDamage { get; set; }        public int MaxDamage { get; set; }        public int BonusHitChance { get; set; }        public int BonusDamage { get; set; }        public bool isTwoHanded { get; set; }        public WeaponType Type { get; set; }        //CTORs - Collect        public Weapon(string name, int minDamage, int maxDamage, int bonusHitChance, int bonusDamage, bool isTwoHanded, WeaponType type)
+        //FIELDS - Funny
+
+        //PROPS - People
+        public string Name {  get; set; }
+        public int MinDamage { get; set; }
+        public int MaxDamage { get; set; }
+        public int BonusHitChance { get; set; }
+        public int BonusDamage { get; set; }
+        public WeaponType Type { get; set; }
+
+        //CTORs - Collect
+        public Weapon(string name, int minDamage, int maxDamage, int bonusHitChance, int bonusDamage, WeaponType type)
         {
             Name = name;
-            MinDamage = minDamage;
             MaxDamage = maxDamage;
+            MinDamage = minDamage;
             BonusHitChance = bonusHitChance;
             BonusDamage = bonusDamage;
             Type = type;
-        }        public override string ToString()
+        }
+
+        public override string ToString()
         {
-            return base.ToString();
-        }        //METHODS - Monkeys
+            return $"{Name}\n" +
+                   $"Damage: {MinDamage} - {MaxDamage}\n" +
+                   $"Bonus Hit: {BonusHitChance}%\n" +
+                   $"Weapon Type: {Type}";
+        }
+
+        //METHODS - Monkeys
     }
 }

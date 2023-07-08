@@ -2,17 +2,42 @@
 {
     public abstract class Character
     {
-        //FIELDS - Funny        //PROPS - People        public string Name { get; set; }        public int MaxLife { get; set; }        public int Life { get; set; }        public int HitChance { get; set; }        public int Block { get; set; }                //CTORs - Collect        public Character (string name, int maxLife, int hitChance, int block)
+        //FIELDS - Funny
+
+        //PROPS - People
+        public string Name { get; set; }
+
+        public int MaxLife { get; set; }
+
+        public int Life { get; set; }
+
+        public int HitChance { get; set; }
+
+        public int Block { get; set; }
+
+        
+        //CTORs - Collect
+        public Character (string name, int maxLife, int hitChance, int block, int life)
         {
             Name = name;
             MaxLife = maxLife;
             Life = maxLife;
             HitChance = hitChance;
             Block = block;
-        }        //METHODS - Monkeys
-        public Character()
+            Life = life;
+        }
+        public Character(string name, int maxLife, int hitChance, int block)
         {
+            Name = name;
+            HitChance = hitChance;
+            Block = block;
+            MaxLife = maxLife;
+        }
 
+        //METHODS - Monkeys
+        public Character () 
+        {
+        
         }
 
         public virtual int CalcBlock() { return Block; }
