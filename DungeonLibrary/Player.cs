@@ -28,6 +28,8 @@ namespace DungeonLibrary
             {
                 case Race.Human:
                     HitChance += 5;
+                    Life += 0;
+                    MaxLife += 0;
                     break;
                 case Race.Dragonborn:
                     HitChance += 2;
@@ -41,7 +43,7 @@ namespace DungeonLibrary
                     break;
                 case Race.Dwarf:
                     HitChance += 3;
-                    Life += 3;
+                    Life -= 3;
                     MaxLife -= 3;
                     break;
                 case Race.Barbarian:
@@ -52,7 +54,7 @@ namespace DungeonLibrary
                 case Race.Druid:
                     HitChance += 5;
                     Life += 5;
-                    MaxLife -= 5;
+                    MaxLife += 5;
                     break;
                 default:
                     break;
@@ -63,22 +65,28 @@ namespace DungeonLibrary
 
         //METHODS - Monkeys
 
-        private static string GetRaceDesc(Race race)
+        public static string GetRaceDesc(Race race)
         {
             switch (race)
             {
                 case Race.Human:
-                    return "Human";
+                    return "Human\n" +
+                        "HitChance += 5;\r\nLife += 0;\r\nMaxLife += 0;";
                 case Race.Dragonborn:
-                    return "Dragonborn";
+                    return "Dragonborn\n" +
+                        "HitChance += 2;\r\nLife += 5;\r\nMaxLife += 5;";
                 case Race.Fairy:
-                    return "Fairy";
+                    return "Fairy\n" +
+                        "HitChance += 7;\r\nLife -= 2;\r\nMaxLife -= 2;";
                 case Race.Dwarf:
-                    return "Dwarf";
+                    return "Dwarf\n" +
+                        "HitChance += 3;\r\nLife += 3;\r\nMaxLife -= 3";
                 case Race.Barbarian:
-                    return "Barbarian";
+                    return "Barbarian\n" +
+                        "HitChance += 4;\r\nLife -= 4;\r\nMaxLife -= 4";
                 case Race.Druid:
-                    return "Druid";
+                    return "Druid\n" +
+                        "HitChance += 5;\r\nLife += 5;\r\nMaxLife -= 5;";
                 default:
                     return "";
             }

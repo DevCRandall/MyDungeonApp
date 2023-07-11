@@ -3,10 +3,28 @@
     public abstract class Character
     {
         //FIELDS - Funny
+        private string _name;
+        private int _hitChance;
         private int _maxLife;
+        private int _block;
         private int _life;
+
         //PROPS - People
-        public string Name { get; set; }
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+        public int HitChance
+        {
+            get { return _hitChance; }
+            set { _hitChance = value; }
+        }
+        public int Block
+        {
+            get { return _block; }
+            set { _block = value; }
+        }
 
         public int MaxLife 
         {
@@ -20,11 +38,6 @@
             //Life cannot be more than MaxLife (think healing). If it is, just set it to the value of MaxLife.
             set { _life = value <= MaxLife ? value : MaxLife; } //always reference other properties, not fields, in case there are business rules in place.
         }
-
-        public int HitChance { get; set; }
-
-        public int Block { get; set; }
-
         
         //CTORs - Collect
         public Character (string name, int maxLife, int hitChance, int block, int life)

@@ -18,10 +18,53 @@ namespace MyDungeonApp
             //Reference the notes in the TestHarness for some ideas of how to expand player creation.
 
             //Potential expansion - Let the user choose from a list of pre-made weapons.
+
+            Console.WriteLine("What is your name?");
+            string playerName = Console.ReadLine();
+            Console.WriteLine($"Hello {playerName}!");
+
+            
+            List<Race> PlayerRaces = Enum.GetValues(typeof(Race)).OfType<Race>().ToList();
+            //Dictionary<DungeonLibrary.RaceName, RaceBonus> races = new Dictionary<DungeonLibrary.RaceName, RaceBonus>();
+            //races[DungeonLibrary.RaceName.Human] = new DungeonLibrary.Race(DungeonLibrary.RaceName.Human, 5, 0, 0);
+            //races[DungeonLibrary.RaceName.Human] = new DungeonLibrary.Race(DungeonLibrary.RaceName.Dragonborn, 5, 0, 0);
+            //races[DungeonLibrary.RaceName.Human] = new DungeonLibrary.Race(DungeonLibrary.RaceName.Fairy, 5, 0, 0);
+            //races[DungeonLibrary.RaceName.Human] = new DungeonLibrary.Race(DungeonLibrary.RaceName.Dwarf, 5, 0, 0);
+            //races[DungeonLibrary.RaceName.Human] = new DungeonLibrary.Race(DungeonLibrary.RaceName.Barbarian, 5, 0, 0);
+            //races[DungeonLibrary.RaceName.Human] = new DungeonLibrary.Race(DungeonLibrary.RaceName.Druid, 5, 0, 0);
+            foreach (Race race in PlayerRaces)
+            {
+                Console.WriteLine(Player.GetRaceDesc(race));
+            }
+
+            Race validSelectedRace = Race.Human;
+            bool inputInvalid = true;
+            while(inputInvalid)
+            {
+                Console.WriteLine("What kind of Adventurer are you?");
+                string selectedRace = Console.ReadLine();
+
+                if (Enum.TryParse(selectedRace, out Race selectedRaceEnum))
+                {
+                    validSelectedRace = selectedRaceEnum;
+                    inputInvalid = !inputInvalid;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid Race, Try again.");
+                    Console.ResetColor();
+                }
+            }
+
+            // Convert string "Human" to Enum Race.Human
+
+
             Weapon club = new("Lightsaber", 1, 8, 10, 0, WeaponType.Club);
 
             //Potential Expansion - Let the user choose their name and Race
-            Player player = new("Leeroy Jenkins", Race.Human, club);
+            //Player player = new($"{playerName}", races[DungeonLibrary.RaceName.Human], club);
+            Player player = new($"{playerName}", validSelectedRace, club);
 
             player.Score = 0;
 
@@ -114,6 +157,7 @@ namespace MyDungeonApp
             #endregion
         }//End Main()
 
+        #region GetRoom
         private static string GetRoom()
         {
             string[] rooms =
@@ -134,5 +178,6 @@ namespace MyDungeonApp
             //Refactor:
             //return rooms[new Random().Next(rooms.Length)];
         }//End GetRoom()
+        #endregion GetRoom
     }
 }

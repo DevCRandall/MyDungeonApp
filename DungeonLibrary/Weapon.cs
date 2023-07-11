@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DungeonLibrary
 {
@@ -10,12 +11,19 @@ namespace DungeonLibrary
     {
         //FIELDS - Funny
 
+        private int _minDamage;
+        
         //PROPS - People
-        public string Name {  get; set; }
-        public int MinDamage { get; set; }
+        public string Name { get; set; }
+        public int MinDamage
+        {
+            get { return _minDamage; }
+            //Min damage must be greater than 0 and less than Max. If not, default to 1.
+            set { _minDamage = value > 0 && value < MaxDamage ? value : 1; }
+        }
         public int MaxDamage { get; set; }
         public int BonusHitChance { get; set; }
-        public int BonusDamage { get; set; }
+
         public WeaponType Type { get; set; }
 
         //CTORs - Collect
@@ -25,7 +33,6 @@ namespace DungeonLibrary
             MaxDamage = maxDamage;
             MinDamage = minDamage;
             BonusHitChance = bonusHitChance;
-            BonusDamage = bonusDamage;
             Type = type;
         }
 
