@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using DungeonLibrary;
 
@@ -13,17 +14,23 @@ namespace MyDungeonApp
             Console.WriteLine("Hello Adventurer! Welcome to the Dungeon of Doom!");
             #endregion
 
-            #region Player Creation
+            
             //Player Creation, after we've learned how to create custom Datatypes.
             //Reference the notes in the TestHarness for some ideas of how to expand player creation.
 
             //Potential expansion - Let the user choose from a list of pre-made weapons.
 
+            #region Select Player Name
             Console.WriteLine("What is your name?");
             string playerName = Console.ReadLine();
-            Console.WriteLine($"Hello {playerName}!");
+            Console.Clear();
+            Console.WriteLine($"Hello {playerName}!\n");
+            #endregion Select Player Name
+
+            #region Player Race Selection
 
             
+
             List<Race> PlayerRaces = Enum.GetValues(typeof(Race)).OfType<Race>().ToList();
             //Dictionary<DungeonLibrary.RaceName, RaceBonus> races = new Dictionary<DungeonLibrary.RaceName, RaceBonus>();
             //races[DungeonLibrary.RaceName.Human] = new DungeonLibrary.Race(DungeonLibrary.RaceName.Human, 5, 0, 0);
@@ -36,13 +43,17 @@ namespace MyDungeonApp
             {
                 Console.WriteLine(Player.GetRaceDesc(race));
             }
-
+            Console.WriteLine("What kind of Adventurer are you?");
             Race validSelectedRace = Race.Human;
+
+            #endregion Player Race Selection
+
             bool inputInvalid = true;
             while(inputInvalid)
             {
-                Console.WriteLine("What kind of Adventurer are you?");
-                string selectedRace = Console.ReadLine();
+                
+                string selectedRace = Common.convertToPascal(Console.ReadLine());
+                
 
                 if (Enum.TryParse(selectedRace, out Race selectedRaceEnum))
                 {
@@ -57,18 +68,19 @@ namespace MyDungeonApp
                 }
             }
 
-            // Convert string "Human" to Enum Race.Human
+            #region Weapon Selection
+            
 
-
-            Weapon club = new("Lightsaber", 1, 8, 10, 0, WeaponType.Club);
+            
 
             //Potential Expansion - Let the user choose their name and Race
             //Player player = new($"{playerName}", races[DungeonLibrary.RaceName.Human], club);
-            Player player = new($"{playerName}", validSelectedRace, club);
+            Player player = new($"{playerName}", validSelectedRace, new Weapon("Lightsaber", 1, 8, 10, 0, WeaponType.Club));
+            Common.changeWeapon(player, "What weapon are you taking with you?");
 
             player.Score = 0;
 
-            #endregion
+            #endregion Weapon Selection
 
             //Outer Loop
             bool quit = false;
@@ -83,7 +95,7 @@ namespace MyDungeonApp
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("\n In this room is a " + monster.Name);
                 Console.ResetColor();
-                #endregion
+                #endregion 
 
                 #region Encounter Loop                
                 //This menu repeats until either the monster dies or the player quits, dies, or runs away.
@@ -96,7 +108,8 @@ namespace MyDungeonApp
                         "2) Run away\n" +
                         "3) Player Info\n" +
                         "4) Monster Info\n" +
-                        "5) Exit\n");
+                        "5) Weapon\n" +
+                        "6) Exit\n");
 
                     char action = Console.ReadKey(true).KeyChar;
                     Console.Clear();
@@ -127,8 +140,11 @@ namespace MyDungeonApp
                             // Print monster details to the screen
                             Console.WriteLine(monster);
                             break;
-
                         case '5':
+                            Common.changeWeapon(player, "What do you want to change your weapon to?");
+                            break;
+
+                        case '6':
                             //quit the whole game. "reload = true;" gives us a new room and monster, "quit = true" quits the game, leaving both the inner AND outer loops.
                             Console.WriteLine("No one likes a quitter!");
                             quit = true;
@@ -138,7 +154,7 @@ namespace MyDungeonApp
                             Console.WriteLine("Do you think this is a game?? Quit playing around!");
                             break;
                     }//end switch
-                    #endregion
+                    #endregion Menu
                     // Check Player Life. If they are dead, quit the game and show them their score.
                     if (player.Life < +0)
                     {
@@ -147,7 +163,7 @@ namespace MyDungeonApp
                     }
 
                 } while (!reload && !quit); //While reload and quit are both FALSE (!true), keep looping. If either becomes true, leave the inner loop.
-                #endregion
+                #endregion Encounter Loop
 
 
             } while (!quit);
@@ -155,7 +171,12 @@ namespace MyDungeonApp
             //TODO output the final score
             Console.WriteLine("You defeated " + player.Score + " monster" + (player.Score == 1 ? "." : "s."));
             #endregion
+
+
+            
         }//End Main()
+
+        
 
         #region GetRoom
         private static string GetRoom()
@@ -180,4 +201,5 @@ namespace MyDungeonApp
         }//End GetRoom()
         #endregion GetRoom
     }
+    
 }

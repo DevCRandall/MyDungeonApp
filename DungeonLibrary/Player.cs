@@ -71,22 +71,22 @@ namespace DungeonLibrary
             {
                 case Race.Human:
                     return "Human\n" +
-                        "HitChance += 5;\r\nLife += 0;\r\nMaxLife += 0;";
+                        "HitChance += 5;\r\nLife += 0;\r\nMaxLife += 0;\n\n";
                 case Race.Dragonborn:
                     return "Dragonborn\n" +
-                        "HitChance += 2;\r\nLife += 5;\r\nMaxLife += 5;";
+                        "HitChance += 2;\r\nLife += 5;\r\nMaxLife += 5;\n\n";
                 case Race.Fairy:
                     return "Fairy\n" +
-                        "HitChance += 7;\r\nLife -= 2;\r\nMaxLife -= 2;";
+                        "HitChance += 7;\r\nLife -= 2;\r\nMaxLife -= 2;\n\n";
                 case Race.Dwarf:
                     return "Dwarf\n" +
-                        "HitChance += 3;\r\nLife += 3;\r\nMaxLife -= 3";
+                        "HitChance += 3;\r\nLife += 3;\r\nMaxLife -= 3\n\n";
                 case Race.Barbarian:
                     return "Barbarian\n" +
-                        "HitChance += 4;\r\nLife -= 4;\r\nMaxLife -= 4";
+                        "HitChance += 4;\r\nLife -= 4;\r\nMaxLife -= 4\n\n";
                 case Race.Druid:
                     return "Druid\n" +
-                        "HitChance += 5;\r\nLife += 5;\r\nMaxLife -= 5;";
+                        "HitChance += 5;\r\nLife += 5;\r\nMaxLife -= 5;\n\n";
                 default:
                     return "";
             }
