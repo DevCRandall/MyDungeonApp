@@ -110,7 +110,7 @@ namespace MyDungeonApp
                         "3) Player Info\n" +
                         "4) Monster Info\n" +
                         "5) Weapon\n" +
-                        "6) Heal\n" +
+                        "6) Health Potion\n" +
                         "7) Exit\n");
 
                     char action = Console.ReadKey(true).KeyChar;
