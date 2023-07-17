@@ -19,7 +19,7 @@ namespace DungeonLibrary
         //CTORs - Collect
 
         public Player(string name,/*int hitChance, int block, int maxLife,*/ Race playerRace, Weapon equippedWeapon, bool canHeal) :
-            base(name, 70, 25, 15)//hitchance, block, maxLife/Life - These are the base values and will change with player class.
+            base(name, 70, 45, 15)//hitchance, block, maxLife/Life - These are the base values and will change with player class.
         {
             PlayerRace = playerRace;
             EquippedWeapon = equippedWeapon;
@@ -127,6 +127,9 @@ namespace DungeonLibrary
             bool canHeal = true;
             if (Life < MaxLife)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"You healed for {healAmount}");
+                Console.ResetColor();
                 int newlife = Life + healAmount;
                 Life = newlife;
                 return Life;
@@ -141,10 +144,6 @@ namespace DungeonLibrary
 
             }
             return Life;
-
-            Console.WriteLine($"You healed for "[healAmount]);
-            
-
         }
 
     }

@@ -61,10 +61,10 @@ namespace DungeonLibrary
         public static Monster GetMonster()
         {
             //TODO Come back to replace these monsters with your own monster subtypes later.
-            Assassin m1 = new("Assassin", 50, 20, 25, 8, 2, "This is an Assassin", false);
-            Bandit m2 = new("Bandit", 70, 20, 25, 8, 2, "This is a Bandit", false);
-            Berserker m3 = new("Berserker", 50, 20, 25, 8, 2, "This is a Berserker", false);
-            Dragon m4 = new("Dragon", 100, 20, 25, 8, 2, "This is a Dragon", false);
+            Assassin m1 = new("Assassin", 60, 20, 25, 8, 2, "This is an Assassin", false);
+            Bandit m2 = new("Bandit", 70, 20, 25, 10, 4, "This is a Bandit", false);
+            Berserker m3 = new("Berserker", 70, 20, 25, 13, 8, "This is a Berserker", false);
+            Dragon m4 = new("Dragon", 100, 20, 25, 20, 10, "This is a Dragon", false);
 
             List<Monster> monsters = new()
             {

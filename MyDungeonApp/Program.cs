@@ -76,7 +76,7 @@ namespace MyDungeonApp
 
             //Potential Expansion - Let the user choose their name and Race
             //Player player = new($"{playerName}", races[DungeonLibrary.RaceName.Human], club);
-            Player player = new($"{playerName}", validSelectedRace, new Weapon("Lightsaber", 1, 8, 10, 0, WeaponType.Club), false);
+            Player player = new($"{playerName}", validSelectedRace, new Weapon("Club", 1, 8, 10, 0, WeaponType.Club), false);
             Common.changeWeapon(player, "What weapon are you taking with you?");
 
             player.Score = 0;
@@ -148,7 +148,7 @@ namespace MyDungeonApp
                             break;
 
                         case '6':
-                            Console.WriteLine("You attemtped to heal");
+                            Console.WriteLine("You took a health potion");
                             player.CalcHeal();
                             Combat.DoAttack(monster, player);
                             break;
