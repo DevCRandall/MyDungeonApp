@@ -19,7 +19,7 @@ namespace DungeonLibrary
             this.CanDodge = canDodge;
         }
         //CTOR
-        public Bandit() : base("Bandit", 15, 2, 20, 6, 1, "Check your pockets and don't trust them.")
+        public Bandit() : base("Bandit", 50, 20, 20, 6, 1, "Check your pockets and don't trust them.")
         {
             CanDodge = false;
         }

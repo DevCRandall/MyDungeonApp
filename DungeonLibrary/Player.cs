@@ -14,14 +14,16 @@ namespace DungeonLibrary
         public Race PlayerRace { get; set; }
         public Weapon EquippedWeapon { get; set; }
         public int Score { get; set; }
+        public bool CanHeal { get; set; }
 
         //CTORs - Collect
 
-        public Player(string name,/*int hitChance, int block, int maxLife,*/ Race playerRace, Weapon equippedWeapon) :
-            base(name, 70, 5, 40)//hitchance, block, maxLife/Life - These are the base values and will change with player class.
+        public Player(string name,/*int hitChance, int block, int maxLife,*/ Race playerRace, Weapon equippedWeapon, bool canHeal) :
+            base(name, 70, 25, 15)//hitchance, block, maxLife/Life - These are the base values and will change with player class.
         {
             PlayerRace = playerRace;
             EquippedWeapon = equippedWeapon;
+            CanHeal = canHeal;
 
             #region Race Bonus
             switch (playerRace)
@@ -59,6 +61,7 @@ namespace DungeonLibrary
                 default:
                     break;
             }
+            CanHeal = canHeal;
 
             #endregion
         }
@@ -114,6 +117,34 @@ namespace DungeonLibrary
         {
             int chance = HitChance + EquippedWeapon.BonusHitChance;
             return chance;
+        }
+
+        public int CalcHeal()
+        {
+            Random random = new Random();
+            int healAmount = random.Next(1, 26);
+
+            bool canHeal = true;
+            if (Life < MaxLife)
+            {
+                int newlife = Life + healAmount;
+                Life = newlife;
+                return Life;
+
+            }
+            else if (Life >= MaxLife)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("You are at max health.");
+                Console.ResetColor();
+                canHeal = false;
+
+            }
+            return Life;
+
+            Console.WriteLine($"You healed for "[healAmount]);
+            
+
         }
 
     }

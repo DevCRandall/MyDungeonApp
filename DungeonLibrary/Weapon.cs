@@ -42,34 +42,34 @@ namespace DungeonLibrary
             switch (type)
             {
                 case WeaponType.Club:
-                    MinDamage += 5;
-                    MaxDamage += 0;
-                    BonusDamage += 0;
-                    BonusHitChance += 5;
-                    break;
-                case WeaponType.BattleAxe:
-                    MinDamage += 5;
+                    MinDamage += 1;
                     MaxDamage += 0;
                     BonusDamage += 0;
                     BonusHitChance += 0;
+                    break;
+                case WeaponType.Battleaxe:
+                    MinDamage += 3;
+                    MaxDamage += 3;
+                    BonusDamage += 0;
+                    BonusHitChance += 2;
                     break;
                 case WeaponType.Longsword:
-                    MinDamage += 5;
-                    MaxDamage += 0;
+                    MinDamage += 2;
+                    MaxDamage += 2;
                     BonusDamage += 0;
-                    BonusHitChance += 0;
+                    BonusHitChance += 3;
                     break;
                 case WeaponType.Longbow:
-                    MinDamage += 5;
+                    MinDamage += 4;
                     MaxDamage += 0;
                     BonusDamage += 0;
-                    BonusHitChance += 0;
+                    BonusHitChance += 4;
                     break;
                 case WeaponType.Trident:
-                    MinDamage += 5;
-                    MaxDamage += 0;
+                    MinDamage += 2;
+                    MaxDamage += 5;
                     BonusDamage += 0;
-                    BonusHitChance += 0;
+                    BonusHitChance += 5;
                     break;
                 default:
                     break;
@@ -95,7 +95,7 @@ namespace DungeonLibrary
                         "minDamage += 5;\n" +
                     "MaxDamage += 0;\n" +
                     "BonusHitChance += 0\n\n";
-                case WeaponType.BattleAxe:
+                case WeaponType.Battleaxe:
                     return "BattleAxe:\n" +
                         "minDamage += 5;\n" +
                     "MaxDamage += 0;\n" +

@@ -45,6 +45,7 @@ namespace MyDungeonApp
             }
             Console.WriteLine("What kind of Adventurer are you?");
             Race validSelectedRace = Race.Human;
+            
 
             #endregion Player Race Selection
 
@@ -67,7 +68,7 @@ namespace MyDungeonApp
                     Console.ResetColor();
                 }
             }
-
+            Console.Clear();
             #region Weapon Selection
             
 
@@ -75,7 +76,7 @@ namespace MyDungeonApp
 
             //Potential Expansion - Let the user choose their name and Race
             //Player player = new($"{playerName}", races[DungeonLibrary.RaceName.Human], club);
-            Player player = new($"{playerName}", validSelectedRace, new Weapon("Lightsaber", 1, 8, 10, 0, WeaponType.Club));
+            Player player = new($"{playerName}", validSelectedRace, new Weapon("Lightsaber", 1, 8, 10, 0, WeaponType.Club), false);
             Common.changeWeapon(player, "What weapon are you taking with you?");
 
             player.Score = 0;
@@ -109,7 +110,8 @@ namespace MyDungeonApp
                         "3) Player Info\n" +
                         "4) Monster Info\n" +
                         "5) Weapon\n" +
-                        "6) Exit\n");
+                        "6) Heal\n" +
+                        "7) Exit\n");
 
                     char action = Console.ReadKey(true).KeyChar;
                     Console.Clear();
@@ -140,11 +142,18 @@ namespace MyDungeonApp
                             // Print monster details to the screen
                             Console.WriteLine(monster);
                             break;
+
                         case '5':
                             Common.changeWeapon(player, "What do you want to change your weapon to?");
                             break;
 
                         case '6':
+                            Console.WriteLine("You attemtped to heal");
+                            player.CalcHeal();
+                            Combat.DoAttack(monster, player);
+                            break;
+
+                        case '7':
                             //quit the whole game. "reload = true;" gives us a new room and monster, "quit = true" quits the game, leaving both the inner AND outer loops.
                             Console.WriteLine("No one likes a quitter!");
                             quit = true;
