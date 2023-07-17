@@ -19,7 +19,7 @@ namespace DungeonLibrary
             this.CanDodge = canDodge;
         }
         //CTOR
-        public Dragon() : base("Dragon", 15, 2, 20, 6, 1, "Fire breathing behemoth")
+        public Dragon() : base("Dragon", 50, 25, 20, 6, 1, "Fire breathing behemoth")
         {
             CanDodge = false;
         }

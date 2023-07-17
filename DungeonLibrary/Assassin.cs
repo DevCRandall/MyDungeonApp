@@ -19,7 +19,7 @@ namespace DungeonLibrary
             this.CanDodge = canDodge;
         }
         //CTOR
-        public Assassin() : base("Assassin", 15, 2, 20, 6, 1, "She wants all your teeth!")
+        public Assassin() : base("Assassin", 50, 20, 20, 6, 1, "Very Sneaky")
         {
             CanDodge = false;
         }

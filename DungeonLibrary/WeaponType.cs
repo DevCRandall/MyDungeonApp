@@ -9,7 +9,7 @@ namespace DungeonLibrary
     public enum WeaponType
     {
         Club,
-        BattleAxe,
+        Battleaxe,
         Longsword,
         Longbow,
         Trident

@@ -19,7 +19,7 @@ namespace DungeonLibrary
             this.CanDodge = canDodge;
         }
         //CTOR
-        public Berserker() : base("Assassin", 15, 2, 20, 6, 1, "This creature has a short temper!")
+        public Berserker() : base("Assassin", 50, 20, 20, 6, 1, "This creature has a short temper!")
         {
             CanDodge = false;
         }
